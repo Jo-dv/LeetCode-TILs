@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+SELECT T.ID, 
+CASE
+    WHEN T.P_ID IS NULL THEN "Root"
+    WHEN C.ID IS NULL THEN "Leaf"
+    ELSE "Inner"
+END TYPE
+FROM TREE T
+LEFT JOIN TREE C ON T.ID = C.P_ID
+GROUP BY T.ID, T.P_ID
